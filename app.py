@@ -1,5 +1,5 @@
 # Import Flask and other required modules
-from flask import Flask, request, render_template, g
+from flask import Flask, request, render_template, g, redirect, url_for
 import sqlite3
 import csv
 from io import StringIO
@@ -82,6 +82,14 @@ def export():
         headers=[('Content-Disposition', 'attachment; filename="history.csv"')])
     response.data = output.getvalue().encode('utf-8')
     return response
+
+
+@app.route('/clear', methods=['POST'])
+def clear():
+    db = get_db()
+    db.execute('DELETE FROM history')
+    db.commit()
+    return redirect(url_for('history'))
 
 
 if __name__ == '__main__':

@@ -21,5 +21,9 @@
         {% endfor %}
     </table>
     <p><a href="/">Back to Calculator</a></p>
+    <form method="POST" action="{{ url_for('clear') }}">
+        <input type="submit" value="Очистить историю">
+    </form>
+
 </body>
 </html>
