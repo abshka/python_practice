@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Calculator</title>
+</head>
+<body>
+    <h1>Advanced Calculator</h1>
+    <form method="post">
+        <label for="expression">Expression:</label>
+        <input type="text" name="expression" id="expression" value="{{ request.form.expression }}">
+        <input type="submit" value="Calculate">
+    </form>
+    {% if result %}
+    <p>Result: {{ result }}</p>
+    {% endif %}
+    <p><a href="/history">View History</a></p>
+    <p><a href="/export">Export History</a></p>
+</body>
+</html>
