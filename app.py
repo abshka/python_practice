@@ -16,6 +16,8 @@ def init_db():
     with app.open_resource('schema.sql', mode='r') as f:
         db.cursor().executescript(f.read())
     db.commit()
+    db.execute("CREATE TABLE IF NOT EXISTS history (id INTEGER PRIMARY KEY, expression TEXT, result REAL)")
+    db.commit()
 
 
 def get_db():
