@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS history;
+CREATE TABLE history (
+  id INTEGER PRIMARY KEY,
+  expression TEXT NOT NULL,
+  result REAL NOT NULL
+);

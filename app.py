@@ -16,6 +16,9 @@ def init_db():
     with app.open_resource('schema.sql', mode='r') as f:
         db.cursor().executescript(f.read())
     db.commit()
+    db.execute(
+        'CREATE TABLE IF NOT EXISTS history (id INTEGER PRIMARY KEY AUTOINCREMENT, expression TEXT, result REAL)')
+    db.commit()
 
 
 def get_db():
@@ -37,6 +40,7 @@ def close_connection(exception):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     """Handle requests to the main page."""
+    init_db()
     if request.method == 'POST':
         expression = request.form['expression']
         try:
@@ -79,4 +83,4 @@ def export():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000,debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
