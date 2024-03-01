@@ -46,6 +46,7 @@ File Structure
 * `Dockerfile` - the Docker configuration file
 * `requirements.txt` - the list of required Python packages
 * `schema.sql` - the SQL schema for the database
+* `history.db` - the database
 * `Templates/` - directory containing the HTML templates for the application
 
 Contributing
